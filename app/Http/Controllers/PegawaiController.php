@@ -45,10 +45,10 @@ class PegawaiController extends Controller
 'agama' => 'required',
 'alamat' => 'required',
 'kode_kecamatan' => 'required',
-'kode_pegawai' => 'required',
+'kode_kelurahan' => 'required',
 'kode_provinsi' => 'required'
         ]);
-        
+
         $inputPegawai = $request->all();
         PegawaiModel::create($inputPegawai);
 
@@ -59,14 +59,23 @@ class PegawaiController extends Controller
     public function edit(Request $request, PegawaiModel $pegawai)
     {
         $data_kecamatan = KecamatanModel::all();
-        return view('pegawai.edit', compact('pegawai', 'data_kecamatan'));
+        $data_provinsi = ProvinsiModel::all();
+        $data_kelurahan = KelurahanModel::all();
+        
+        return view('pegawai.edit', compact('data_kecamatan', 'data_provinsi', 'data_kelurahan', 'pegawai'));
     }
     public function update(Request $request, PegawaiModel $pegawai)
     {
         $request->validate([
-            'kode_pegawai' => 'required',
             'nama_pegawai' => 'required',
-            'kode_kecamatan' => 'required'
+'tempat_lahir' => 'required',
+'tanggal_lahir' => 'required',
+'jenis_kelamin' => 'required',
+'agama' => 'required',
+'alamat' => 'required',
+'kode_kecamatan' => 'required',
+'kode_kelurahan' => 'required',
+'kode_provinsi' => 'required'
         ]);
         $inputPegawai = $request->all();
         $pegawai->update($inputPegawai);

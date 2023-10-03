@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('jenis kelamin');
             $table->string('agama');
             $table->string('alamat');
+            $table->string('kode_kecamatan');
+            $table->string('kode_kelurahan');
+            $table->string('kode_provinsi');
             $table->timestamps();
         });
     }

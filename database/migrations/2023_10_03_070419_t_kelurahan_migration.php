@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_kelurahan')->unique();
             $table->string('nama_kelurahan');
+            $table->string('kode_kecamatan');
             $table->boolean('active')->nullable()->default(false);
             $table->timestamps();
         });

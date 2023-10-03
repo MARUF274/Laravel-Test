@@ -11,30 +11,59 @@
     <title>Create Kelurahan Data</title>
   </head>
   <body>
+    {{-- {{dd($data_kecamatan)}} --}}
     <div class="container" style="width: 50%">
-        <form action="{{route('kelurahan.update', $kelurahan->id)}}" method="post">
+        <form action="{{route('pegawai.update', $pegawai->id)}}" method="post">
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="" class="form-label">Kode Kelurahan</label>
-                <input type="text" value="{{$kelurahan->kode_kelurahan}}" name="kode_kelurahan" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                <label for="" class="form-label">Nama Pegawai</label>
+                <input type="text" name="nama_pegawai" value="{{$pegawai->nama_pegawai}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Nama Kelurahan</label>
-                <input type="text" value="{{$kelurahan->nama_kelurahan}}" name="nama_kelurahan" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                <label for="" class="form-label">Tempat Lahir</label>
+                <input type="text" name="tempat_lahir" value="{{$pegawai->tempat_lahir}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
             </div>
-            <div class="form-check">
-                <input class="form-check-input" value="{{$kelurahan->active}}" type="checkbox" name="active" value="1" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Active
-                </label>
+            <div class="mb-3">
+              <label for="" class="form-label">Tanggal Lahir</label>
+              <input type="date" name="tanggal_lahir" value="{{$pegawai->tanggal_lahir}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Agama</label>
+            <input type="text" name="agama" value="{{$pegawai->agama}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Jenis Kelamin</label>
+          <input type="text" name="jenis_kelamin" value="{{$pegawai->jenis_kelamin}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Alamat</label>
+        <input type="text" name="alamat" value="{{$pegawai->alamat}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+    </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Kecamatan</label>
+              <select class="form-select form-select-lg" name="kode_kelurahan" id="">
+                <option selected>Pilih kelurahan</option>
+                @foreach($data_kelurahan as $item)
+                <option value="{{$item->kode_kelurahan}}">{{$item->nama_kelurahan}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="mb-3">
               <label for="" class="form-label">Kecamatan</label>
               <select class="form-select form-select-lg" name="kode_kecamatan" id="">
-                <option selected>Pilih kecamatan</option>
+                <option selected>Pilih Kecamatan</option>
                 @foreach($data_kecamatan as $item)
                 <option value="{{$item->kode_kecamatan}}">{{$item->nama_kecamatan}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Provinsi</label>
+              <select class="form-select form-select-lg" name="kode_provinsi" id="">
+                <option selected>Pilih Provinsi</option>
+                @foreach($data_provinsi as $item)
+                <option value="{{$item->kode_provinsi}}">{{$item->nama_provinsi}}</option>
                 @endforeach
               </select>
             </div>
